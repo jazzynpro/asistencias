@@ -1,5 +1,70 @@
 package com.krakedev.asistencias.servicios;
 
-public class ServicioEstudiante {
+import java.util.ArrayList;
 
-}
+import org.springframework.stereotype.Service;
+
+import com.krakedev.asistencias.Estudiante;
+
+@Service
+public class ServicioEstudiante {
+	private ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
+	
+	public void agregar(Estudiante estudiante) {
+		Estudiante encontrado = buscarPorCedula(estudiante.getCedula());
+		//si es null no existe permite agregar
+		if(encontrado ==null) {
+			estudiantes.add(estudiante);
+		}else {
+			System.out.println("Estudiante ya existe");
+		}
+		
+	}
+	
+	public Estudiante buscarPorCedula(String cedula) {
+			
+		for (Estudiante estudiante : estudiantes ) {
+			if(estudiante.getCedula().equals(cedula)) {
+				return estudiante;
+			}
+		}
+		return null;
+	}
+	
+	public void eliminar(String cedula) {
+		
+		Estudiante encontrado = buscarPorCedula(cedula);
+		//si es null no existe permite agregar
+		if(encontrado ==null) {
+			System.out.println("Estudiente no existe para eliminar");
+			return;
+		
+		}
+		
+		for(int i=0 ; i<estudiantes.size(); i++) {
+			if(estudiantes.get(i).equals(cedula)) {
+			estudiantes.remove(i);
+			}
+		}}
+	
+	
+	public void actualizar(String cedula, Estudiante nuevo) {
+		for (Estudiante estudiante : estudiantes ) {
+			if(estudiante.getCedula().equals(cedula)) {
+				//opcion 1
+				//estudiante = nuevo; //actualiza todos los campos
+				//opcion 2 
+				estudiante.setNombre(nuevo.getNombre()); //solo edita nombre y apellido
+				estudiante.setApellido(nuevo.getApellido());
+				
+			}
+		}
+		}
+	
+	public ArrayList<Estudiante>listar(){
+	return estudiantes;	
+	}
+	
+	
+	
+	}
