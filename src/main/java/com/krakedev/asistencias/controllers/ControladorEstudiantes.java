@@ -2,6 +2,7 @@ package com.krakedev.asistencias.controllers;
 
 import java.util.ArrayList;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,8 +28,13 @@ public class ControladorEstudiantes {
 	}
 		
 		@GetMapping("/{cedula}")
-		public Estudiante buscarPorCedula(@PathVariable String cedula) {
-			return servicioEstudiantes.buscarPorCedula(cedula);
+		public ResponseEntity <Estudiante> buscarPorCedula(@PathVariable String cedula) {
+			Estudiante encontrado = servicioEstudiantes.buscarPorCedula(cedula);
+			if(encontrado != null) {
+				return ResponseEntity.ok(encontrado);
+			}else {
+				return ResponseEntity.notFound().build();
+			}
 		}
 		
 	@PostMapping
