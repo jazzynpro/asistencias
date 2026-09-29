@@ -1,14 +1,14 @@
 package com.krakedev.asistencias;
 
-public class RegistroEstudiante {
+public class RegistroAsistencia {
 	private Estudiante estudiante;
 	private Asistencia asistencia;
-	public RegistroEstudiante() {
+	public RegistroAsistencia() {
 		super();
 		this.estudiante = new Estudiante();
 		this.asistencia = new Asistencia();
 	}
-	public RegistroEstudiante(Estudiante estudiante, Asistencia asistencia) {
+	public RegistroAsistencia(Estudiante estudiante, Asistencia asistencia) {
 		super();
 		this.estudiante = estudiante;
 		this.asistencia = asistencia;

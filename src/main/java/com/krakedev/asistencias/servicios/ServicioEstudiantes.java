@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.krakedev.asistencias.Estudiante;
 
 @Service
-public class ServicioEstudiante {
+public class ServicioEstudiantes {
 	private ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
 	
 	public void agregar(Estudiante estudiante) {
