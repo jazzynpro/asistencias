@@ -26,11 +26,22 @@ public class ServicioAsistencia {
 	 if(encontrado == null) {
 		 return null;
 	 }
-	 Asistencia asistencia = new Asistencia(LocalDate.now(), LocalDateTime.now(), cedula);
+	 Asistencia asistencia = new Asistencia(LocalDate.now(), LocalDateTime.now(), "P");
 	 RegistroAsistencia registroAsistencia  = new RegistroAsistencia(encontrado, asistencia);
 	 registro.add(registroAsistencia);
 	 
 	 return registroAsistencia;
+ }
+ 
+ public ArrayList<Asistencia>consultarAsistencia(String cedula){
+	 ArrayList<Asistencia> asistencias = new ArrayList<Asistencia>();
+	 
+	 for(RegistroAsistencia reg : registro) {
+		 if(reg.getEstudiante().getCedula().equals(cedula)) {
+			 asistencias.add(reg.getAsistencia());
+		 }
+	 }
+	 return asistencias;
  }
  
 }

@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 public class Asistencia {
 	private LocalDate fechaClase; //2026-09-23
 	private LocalDateTime fechaHoraRegistro; //2026-09-23T20:00
-	private String estado;
+	private String estado; //P-presente A-ausente
 	
 	public Asistencia() {
 		super();
