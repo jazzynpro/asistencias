@@ -42,13 +42,20 @@ public class ServicioEstudiantes {
 		}
 		
 		for(int i=0 ; i<estudiantes.size(); i++) {
-			if(estudiantes.get(i).equals(cedula)) {
+			if(estudiantes.get(i).getCedula().equals(cedula)) {
 			estudiantes.remove(i);
 			}
 		}}
 	
 	
-	public void actualizar(String cedula, Estudiante nuevo) {
+	public Estudiante actualizar(String cedula, Estudiante nuevo) {
+		
+		Estudiante encontrado = buscarPorCedula(cedula);
+		
+		if(encontrado == null) {
+			return null;
+		}
+		
 		for (Estudiante estudiante : estudiantes ) {
 			if(estudiante.getCedula().equals(cedula)) {
 				//opcion 1
@@ -57,8 +64,11 @@ public class ServicioEstudiantes {
 				estudiante.setNombre(nuevo.getNombre()); //solo edita nombre y apellido
 				estudiante.setApellido(nuevo.getApellido());
 				
+				return estudiante;
+				
 			}
 		}
+		return null;
 		}
 	
 	public ArrayList<Estudiante>listar(){
